@@ -2,7 +2,7 @@ import express from 'express';
 import { getParkingLot, getParkingLots, createParkingLot, updateParkingLot, deleteParkingLot } from '../controllers/parkingLotController.js';
 import { register, login, profile } from '../controllers/userController.js';
 import { authenticate, authorize } from '../middlewares/authMiddleware.js';
-
+import { getMessages, createMessage } from '../controllers/messageController.js';
 const router = express.Router();
 
 // Rutas de ParkingLots
@@ -17,5 +17,8 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/profile", authenticate, profile);
 
+// Rutas de Mensajes
+router.post("/messages", createMessage);
+router.get("/messages", getMessages);
 
 export default router;
